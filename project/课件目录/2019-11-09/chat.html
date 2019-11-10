@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>聊天窗口</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .chat{
+            width: 600px;
+            height:400px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .chat .show {
+            height: 300px;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        .chat .show ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .chat .show ul li{
+            height: 30px;
+        }
+        .chat .show ul li .content{
+            background:pink;
+            padding:0 10px;
+            border-radius: 10px;
+            color: #fff;
+        }
+        .chat .show ul li.me{
+            text-align: right;
+        }
+        .chat .input{
+            height: 100px;
+            width: 100%;
+            resize: none;
+            padding: 5px;
+            box-sizing: border-box;
+            outline: none;
+            position: absolute;
+        }
+        .chat button{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="chat">
+            <div class="show">
+                <ul>
+                    <li :class="value.place" v-for="(value,index) in chatList">
+                        {{value.username}}
+                        <span class="content">
+                            {{value.content}}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <textarea class="input" v-model="input"></textarea>
+            <button v-on:click="send">发送</button>
+        </div
+        
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data:{
+                input:'',
+                chatList: [
+                    {
+                        username: '赵信',
+                        place: 'he',
+                        content:''
+                    },
+                    {
+                        username: '唐三',
+                        place: 'me',
+                        content:''
+                    }
+                ]
+            },
+            methods: {
+                send(){
+                    if(this.input) {
+                        this.chatList.push({
+                            username: '唐三',
+                            place: 'me',
+                            content: this.input  
+                        })
+
+                        this.input = ''
+
+                    setTimeout(()=>{
+                            this.chatList.push({
+                            username: '赵信',
+                            place: 'he',
+                            content: '你好，我现在有事不在，一会再和你联系。'  
+                        })
+                        },2000)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
