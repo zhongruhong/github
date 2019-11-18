@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    .box {
+            width: 500px;
+            height: 500px;
+        }
+
+        .bg-red {
+            background: red;
+        }
+
+        .bg-blue {
+            background: blue;
+        }
+
+        .bg-green {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+             <!-- <ul>
+                 <li v-for="item in user">
+                     <p>姓名：{{item.username}}</p>
+                     <p>年龄：{{item.age}}</p>
+                 </li>
+             </ul> -->
+             <!-- <button v-on:click="show">显示</button> -->
+             <button v-on:click="show">显示</button>
+             <button v-on:click="hide">隐藏</button>
+             <button v-on:click="toggle">切换</button>
+             <div v-bind:style="mystyle"></div>
+             <div 
+             v-bind:class="[
+                 'box',
+                 'aa',
+                 {
+                     'bg-red': num==1,
+                     'bg-blue': num==2,
+                     'bg-green': num==3
+                 }
+             ]"
+             >
+         </div>
+    </div>
+    <input type="text" v-model="num">
+    <div class="box" v-show="isShow">
+
+   </div>
+    <script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            num:1,
+            isShow:false,
+            mystyle:[
+                {
+                    background:'blue',
+                    width:'200px',
+                    height:'200px'
+                }
+            ]
+            // user:[
+            //     {
+            //         username:"唐三",
+            //         age:10
+            //     },
+            //     {
+            //         username:"战云",
+            //         age:18
+            //     }
+            // ]
+        },
+        methods:{
+            show(){
+                //alert("1")
+                 this.isShow=true;
+            },
+            hide(){
+               // alert("3")
+                 this.isShow=false;
+            },
+            toggle(){
+                this.isShow=!this.isshow
+            }
+        }
+    });
+    
+    </script>
+</body>
+</html>
