@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./Icon.js"></script>
+    <script src="./Button.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+                <Icon 
+                name="heart" 
+                color="red" 
+                :size="60"
+            />
+        </div>
+          
+        <Button 
+             htmlType="submit"
+             type="primary"
+             size="lg"   
+        >
+         提交
+       </Button>
+    </div>
+    <script>
+    var vm=new Vue({
+        el:"#app",
+        // template:`
+        // <div id="rood">
+        // <Icon
+        // name="search",
+        // color="blue" 
+        // :size="20"
+        // />
+        //   </div>
+        // `
+    })
+    
+    </script>
+</body>
+</html>
